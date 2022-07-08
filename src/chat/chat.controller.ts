@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { CreateMessageDTO } from './dto/Create-message.dto';
 import { ChatService } from './chat.service';
-import { JwtAuthGuard } from 'resources/auth/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 /**

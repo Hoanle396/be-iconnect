@@ -7,8 +7,8 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { IPaginationOptions, paginate } from 'nestjs-typeorm-paginate';
-import { Message } from 'resources/entities/message.entity';
-import { Users } from 'resources/entities/user.entity';
+import { Message } from 'src/entities/message.entity';
+import { Users } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { ChatGateway } from './chat.gateway';
 import { CreateMessageDTO } from './dto/Create-message.dto';

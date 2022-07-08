@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, NotFoundException, NotImplementedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Brand } from 'resources/entities/brand.entity';
-import { Users } from 'resources/entities/user.entity';
+import { Brand } from 'src/entities/brand.entity';
+import { Users } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';

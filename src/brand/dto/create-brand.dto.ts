@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import {  IsNotEmpty, IsString } from "class-validator";
-import { Users } from "resources/entities/user.entity";
-import { IsNullable } from "resources/utils/nullable.util";
+import { Users } from "src/entities/user.entity";
+import { IsNullable } from "src/utils/nullable.util";
 
 export class CreateBrandDto {
 

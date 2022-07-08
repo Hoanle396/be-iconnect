@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString } from "class-validator";
-import { Users } from "resources/entities/user.entity";
+import { Users } from "src/entities/user.entity";
 
 export class CreateInfluencerDto {
    @ApiProperty()

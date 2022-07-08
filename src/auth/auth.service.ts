@@ -3,13 +3,13 @@ import {
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { UsersService } from 'resources/users/users.service';
+import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from './dto/create-user.dto';
 import { GoogleUserDto } from './dto/login-google.dto';
 import { google } from 'googleapis';
-import { Users } from 'resources/entities/user.entity';
+import { Users } from 'src/entities/user.entity';
 const { OAuth2 } = google.auth;
 const client = new OAuth2(process.env.GOOGLE_ID);
 @Injectable()

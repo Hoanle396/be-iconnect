@@ -14,10 +14,10 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
-import { JwtAuthGuard } from 'resources/auth/jwt-auth.guard';
-import RoleGuard from 'resources/role/role.guard';
-import { Role } from 'resources/role/user.enum';
-import { ApiFileImages } from 'resources/utils/file.decorator';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import RoleGuard from 'src/role/role.guard';
+import { Role } from 'src/role/user.enum';
+import { ApiFileImages } from 'src/utils/file.decorator';
 import { BrandService } from './brand.service';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';

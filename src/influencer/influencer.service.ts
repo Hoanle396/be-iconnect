@@ -6,8 +6,8 @@ import {
   NotImplementedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Influencer } from 'resources/entities/influencer.entity';
-import { Users } from 'resources/entities/user.entity';
+import { Influencer } from 'src/entities/influencer.entity';
+import { Users } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateInfluencerDto } from './dto/create-influencer.dto';
 import { updateFlow } from './dto/update-flow.dto';
