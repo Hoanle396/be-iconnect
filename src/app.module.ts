@@ -25,28 +25,19 @@ import { ContractModule } from './contracts/contract.module';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DATABASE_HOST,
-      port: Number(process.env.DATABASE_PORT),
-      username: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_DBNAME,
-      entities: [Users,Influencer,Brand],
+      host: process.env.DATABASE_HOST || '127.0.0.1',
+      port: Number(process.env.DATABASE_PORT) || 5432,
+      username: process.env.DATABASE_USER || 'postgres',
+      password: process.env.DATABASE_PASSWORD || 'postgres',
+      database: process.env.DATABASE_DBNAME || 'postgres',
+      entities: [Users, Influencer, Brand],
       synchronize: true,
-      autoLoadEntities: true
+      autoLoadEntities: true,
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '/public'),
     }),
 
-    RedisModule.forRoot({
-      readyLog: true,
-      config: {
-        host: process.env.REDIS_HOST,
-        port: Number(process.env.REDIS_PORT),
-        username: process.env.REDIS_USER,
-        password:process.env.REDIS_PASSWORD
-      }
-    }),
     AuthModule,
     UsersModule,
     InfluencerModule,
@@ -54,7 +45,7 @@ import { ContractModule } from './contracts/contract.module';
     ChatModule,
     ContractModule,
   ],
-  controllers: [AppController,AuthController],
+  controllers: [AppController, AuthController],
   providers: [AppService],
 })
 export class AppModule {}
