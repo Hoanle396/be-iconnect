@@ -25,7 +25,7 @@ export class InfluencerService {
       createInfluencerDto.user=users
       return await this.influencer.save(createInfluencerDto);
     } catch {
-      throw new BadRequestException();
+      return new BadRequestException();
     }
   }
 
@@ -33,7 +33,7 @@ export class InfluencerService {
     try {
       return await this.influencer.find();
     } catch {
-      throw new NotFoundException({ status: 404, message: 'No data found' });
+      return new NotFoundException({ status: 404, message: 'No data found' });
     }
   }
 
@@ -44,7 +44,7 @@ export class InfluencerService {
         relations: { user: true },
       });
     } catch {
-      throw new NotFoundException({ status: 404, message: 'No data found' });
+      return new NotFoundException({ status: 404, message: 'No data found' });
     }
   }
 
@@ -53,7 +53,7 @@ export class InfluencerService {
       return await this.influencer.update(id, updateInfluencerDto);
     }
     catch {
-      throw new NotImplementedException({status:'not implement',message:'Update failed!'})
+      return new NotImplementedException({status:'not implement',message:'Update failed!'})
     }
   }
 
@@ -71,7 +71,7 @@ export class InfluencerService {
     try {
       return await this.influencer.createQueryBuilder('influencer').select('influencer.username').getMany();
     } catch {
-      throw new NotFoundException({ status: 404, message: 'No data found' });
+      return new NotFoundException({ status: 404, message: 'No data found' });
     }
   }
   async updatePut(username: string, UpdateDto: updateFlow) {
@@ -79,7 +79,7 @@ export class InfluencerService {
       return await this.influencer.createQueryBuilder().update(Influencer).set(UpdateDto).where('username=:username',{username:username}).execute();
     }
     catch {
-      throw new NotImplementedException({status:'not implement',message:'Update failed!'})
+      return new NotImplementedException({status:'not implement',message:'Update failed!'})
     }
   }
 }

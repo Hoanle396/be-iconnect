@@ -46,7 +46,7 @@ export class InfluencerController {
       createInfluencerDto.avatar = '/uploads/image/' + file.filename;
       return await this.influencerService.create(createInfluencerDto, req.user);
     } catch {
-      throw new InternalServerErrorException();
+      return new InternalServerErrorException();
     }
   }
 
@@ -55,7 +55,7 @@ export class InfluencerController {
     try {
       return await this.influencerService.findAll();
     } catch {
-      throw new InternalServerErrorException({
+      return new InternalServerErrorException({
         status: 500,
         message: 'No data found',
       });
@@ -67,7 +67,7 @@ export class InfluencerController {
     try {
       return await this.influencerService.findAllusername();
     } catch {
-      throw new InternalServerErrorException({
+      return new InternalServerErrorException({
         status: 500,
         message: 'No data found',
       });

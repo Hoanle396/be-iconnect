@@ -20,24 +20,30 @@ export class AuthController {
   }
 
   @Post('/register')
-  async register(@Body() user: CreateUserDto) {
+  async register(@Body() user: CreateUserDto,@Res() res: Response) {
     const userexits = await this.usersService.findOne(user.email);
     if (userexits) {
-       throw new BadRequestException({status:'Not register','message':'Email address already exists'});
+      return res.status(HttpStatus.BAD_REQUEST).json({status:'Not register',message:'Email address already exists'});
     }
-    return await this.authService.register(user);
+    const result = await this.authService.register(user);
+    if (result) {
+      return res.status(HttpStatus.OK).json({status:200,message:"Resgiter Successfuly!",data:result})
+    }
+    else {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({status:500,message:"Resgiter Failed!",data:null})
+    }
   }
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('/secret')
-  async getUser(@Request() req) {
+  async getUser(@Request() req,@Res() res: Response) {
     const data=await this.usersService.findOne(req.user.email);
     if(data){
      const {password ,...result}=data
-     return result
+     return res.status(HttpStatus.OK).json({status:200,message:"Authorzied",data:result})
     }
     else{
-      throw new UnauthorizedException()
+      return res.status(HttpStatus.UNAUTHORIZED).json({status:401,message:"Unauthorzied",data:null})
     }
   }
   
@@ -46,14 +52,14 @@ export class AuthController {
     try {
       const data = await this.authService.logingoogle(createUserDto);
       if (data) {
-        return res.status(HttpStatus.OK).send(data);
+        return res.status(HttpStatus.OK).json({status:200,message:"Login Successfuly!",data:data});
       } else {
         return res
           .status(401)
           .send({status:401, message: 'UnAuthorized !' });
       }
     } catch (error) {
-      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({status:500, message:"Internal server error!"});
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({status:500, message:"Internal server error!"});
     }
   }
   @ApiBearerAuth()

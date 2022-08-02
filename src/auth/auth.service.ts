@@ -52,10 +52,7 @@ export class AuthService {
       const { password, ...result } = await this.usersService.save(users);
       return result;
     } catch {
-      throw new InternalServerErrorException({
-        status: 'False',
-        message: 'Could not register',
-      });
+      return null
     }
   }
 

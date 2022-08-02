@@ -18,7 +18,7 @@ export class BrandService {
       createBrandDto.user = users;
       return await this.brand.save(createBrandDto);
     } catch {
-      throw new BadRequestException();
+      return new BadRequestException();
     }
   }
 
@@ -26,7 +26,7 @@ export class BrandService {
     try {
       return await this.brand.find();
     } catch {
-      throw new NotFoundException({ status: 404, message: 'No data found' });
+      return new NotFoundException({ status: 404, message: 'No data found' });
     }
   }
 
@@ -37,7 +37,7 @@ export class BrandService {
         relations: { user: true },
       });
     } catch {
-      throw new NotFoundException({ status: 404, message: 'No data found' });
+      return new NotFoundException({ status: 404, message: 'No data found' });
     }
   }
 
@@ -46,7 +46,7 @@ export class BrandService {
       return await this.brand.update(id, updateBrandDto);
     }
     catch {
-      throw new NotImplementedException({status:'Not implement',message:'Update failed!'})
+      return new NotImplementedException({status:'Not implement',message:'Update failed!'})
     }
   }
 
