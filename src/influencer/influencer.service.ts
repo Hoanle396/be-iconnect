@@ -36,7 +36,14 @@ export class InfluencerService {
       return new NotFoundException({ status: 404, message: 'No data found' });
     }
   }
-
+  async findByUser(user_id: number) {
+    try {
+      return await this.influencer.createQueryBuilder('influencer').where("influencer.user_id=:user_id",{user_id:user_id}).getOne()
+    }
+    catch {
+      return null
+    }
+  }
   async findOne(id: number) {
     try {
       return await this.influencer.findOne({

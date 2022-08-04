@@ -34,14 +34,23 @@ import { ContractModule } from './contracts/contract.module';
       synchronize: true,
       autoLoadEntities: true,
     }),
+    RedisModule.forRoot({
+      readyLog: true,
+      config: {
+        host: process.env.REDIS_HOST || '127.0.0.1',
+        port:  Number(process.env.REDIS_PORT) || 6379,
+        // username: process.env.REDIS_USER || 'default',
+        // password: process.env.REDIS_PASSWORD || 'redis',
+      },
+    }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '/public'),
     }),
 
     AuthModule,
-    UsersModule,
     InfluencerModule,
     BrandModule,
+    UsersModule,
     ChatModule,
     ContractModule,
   ],

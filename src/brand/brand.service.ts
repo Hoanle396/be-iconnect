@@ -29,7 +29,14 @@ export class BrandService {
       return new NotFoundException({ status: 404, message: 'No data found' });
     }
   }
-
+  async findByUser(user_id: number) {
+    try {
+      return await this.brand.createQueryBuilder('brand').where("brand.user_id=:user_id",{user_id:user_id}).getOne()
+    }
+    catch {
+      return null
+    }
+  }
   async findOne(id: number) {
     try {
       return await this.brand.findOne({
