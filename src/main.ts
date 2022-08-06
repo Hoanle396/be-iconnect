@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('IConnect App')
     .setDescription('The IConnect API description')
-    .setVersion('0.1')
+    .setVersion('1.0')
     .setContact("Lê Hữu Hoàn", 'https://hoanle.tk', "hoanle396@gmail.com")
     .addBearerAuth()
     .build();

@@ -3,9 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisModule } from '@liaoliaots/nestjs-redis';
 import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { Users } from './entities/user.entity';
 import { UsersModule } from './users/users.module';
@@ -47,14 +44,12 @@ import { ContractModule } from './contracts/contract.module';
       rootPath: join(__dirname, '..', '/public'),
     }),
 
-    AuthModule,
     InfluencerModule,
     BrandModule,
+    AuthModule,
     UsersModule,
     ChatModule,
     ContractModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService],
 })
 export class AppModule {}
